@@ -114,15 +114,35 @@ export default function Contact() {
                     Contact
                   </p>
                 </div>
-                <div className="space-y-3 text-left">
-                  <div>
-                    <p className="text-[9px] font-bold uppercase text-gray-400 tracking-widest mb-1">USA</p>
-                    <p className="text-sm md:text-base font-bold text-black">+1 (551) 371-2342</p>
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-bold uppercase text-gray-400 tracking-widest mb-1">India</p>
-                    <p className="text-sm md:text-base font-bold text-black">+91 93987 49595</p>
-                  </div>
+
+                {/* Toggle Buttons for Phone */}
+                <div className="flex gap-2 mb-4">
+                  <button
+                    onClick={() => setSelectedOffice("usa")}
+                    className={`flex-1 py-2.5 px-4 rounded-md font-bold uppercase tracking-widest text-[10px] transition-all ${
+                      selectedOffice === "usa"
+                        ? "bg-black text-white"
+                        : "bg-gray-200 text-gray-500 hover:bg-gray-300"
+                    }`}
+                  >
+                    USA
+                  </button>
+                  <button
+                    onClick={() => setSelectedOffice("india")}
+                    className={`flex-1 py-2.5 px-4 rounded-md font-bold uppercase tracking-widest text-[10px] transition-all ${
+                      selectedOffice === "india"
+                        ? "bg-black text-white"
+                        : "bg-gray-200 text-gray-500 hover:bg-gray-300"
+                    }`}
+                  >
+                    India
+                  </button>
+                </div>
+
+                <div className="text-left">
+                  <p className="text-sm md:text-base font-bold text-black">
+                    {selectedOffice === "usa" ? "+1 (551) 371-2342" : "+91 93987 49595"}
+                  </p>
                 </div>
               </div>
             </FadeInUp>

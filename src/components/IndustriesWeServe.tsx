@@ -30,7 +30,7 @@ const industries = [
     icon: faGear,
     name: "Manufacturing",
     items: ["Smart Factory Solutions", "Predictive Maintenance", "Supply Chain AI", "Quality Control"],
-    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&h=400&fit=crop", // Modern manufacturing robotics
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop", // Smart manufacturing technology
   },
   {
     icon: faTruckRampBox,
@@ -42,7 +42,7 @@ const industries = [
     icon: faShoppingCart,
     name: "Retail & E-commerce",
     items: ["Personalization Engines", "Inventory Management", "Customer Analytics", "Omnichannel Solutions"],
-    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=400&fit=crop", // Modern retail store
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop", // Online shopping digital commerce
   },
 ];
 
