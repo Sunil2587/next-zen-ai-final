@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+
+// Initialize Resend lazily to avoid build errors
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,23 +26,68 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Send an email notification
-    // 2. Save to database
-    // 3. Send to CRM
-    // For now, we'll just return success
+    // Send email to info@nextzenaistrategix.com
+    const resend = getResend();
+    const { error: emailError } = await resend.emails.send({
+      from: "Next Zen AI Contact Form <onboarding@resend.dev>",
+      to: ["info@nextzenaistrategix.com"],
+      replyTo: email,
+      subject: `New Contact Form Submission: ${interest || "General Inquiry"}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #000; border-bottom: 2px solid #D4FF00; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; width: 150px;">Name:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">
+                <a href="mailto:${email}" style="color: #0066cc;">${email}</a>
+              </td>
+            </tr>
+            ${company ? `
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Company:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${company}</td>
+            </tr>
+            ` : ''}
+            <tr>
+              <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Interest Area:</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${interest || "Not specified"}</td>
+            </tr>
+          </table>
+          
+          <div style="margin-top: 20px;">
+            <h3 style="color: #333;">Message:</h3>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${message}</div>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
+            <p>This message was sent from the Next Zen AI Strategix website contact form.</p>
+            <p>Submitted at: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} (ET)</p>
+          </div>
+        </div>
+      `,
+    });
 
-    // Example: You could integrate with services like:
-    // - Resend for email
-    // - Supabase for database
-    // - HubSpot/Salesforce for CRM
+    if (emailError) {
+      console.error("Email send error:", emailError);
+      return NextResponse.json(
+        { error: "Failed to send message. Please try again later." },
+        { status: 500 }
+      );
+    }
 
-    console.log("Contact form submission:", {
+    console.log("Contact form submission sent:", {
       name,
       email,
       company,
       interest,
-      message,
       timestamp: new Date().toISOString(),
     });
 

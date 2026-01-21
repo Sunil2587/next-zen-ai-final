@@ -16,6 +16,8 @@ export { default as FAQ } from "./FAQ";
 export { default as CTABanner } from "./CTABanner";
 export { default as Spinner } from "./Spinner";
 export { default as LoadingProvider } from "./LoadingProvider";
+export { default as Carousel } from "./Carousel";
+export { default as ExpandableCard } from "./ExpandableCard";
 
 // New homepage sections following old project structure
 export { default as WhatWeDo } from "./WhatWeDo";

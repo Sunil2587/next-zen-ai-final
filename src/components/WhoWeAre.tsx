@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInUp } from "@/components";
+import { FadeInUp, ExpandableCard } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLightbulb,
@@ -77,8 +77,26 @@ export default function WhoWeAre() {
           </div>
         </FadeInUp>
 
-        {/* Values Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* Mobile Expandable Cards */}
+        <div className="block sm:hidden space-y-3">
+          {values.map((value, index) => (
+            <FadeInUp key={index}>
+              <ExpandableCard
+                title={value.title}
+                icon={<FontAwesomeIcon icon={value.icon} className="text-lg" />}
+                preview={value.description.substring(0, 45) + "..."}
+                defaultOpen={index === 0}
+              >
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+              </ExpandableCard>
+            </FadeInUp>
+          ))}
+        </div>
+
+        {/* Desktop Values Grid */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {values.map((value, index) => (
             <FadeInUp key={index}>
               <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 h-full hover:border-zen hover:shadow-md transition-all group">

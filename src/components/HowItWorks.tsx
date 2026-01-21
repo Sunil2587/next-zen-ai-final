@@ -7,6 +7,7 @@ import {
   faCode,
   faRocket,
   faChartLine,
+  faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 const steps = [
@@ -59,11 +60,57 @@ export default function HowItWorks() {
           </div>
         </FadeInUp>
 
-        <div className="relative">
+        {/* Mobile Vertical Timeline */}
+        <div className="block sm:hidden">
+          <div className="relative">
+            {/* Vertical Line */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-zen via-gray-300 to-transparent" />
+
+            <div className="space-y-6">
+              {steps.map((step, index) => (
+                <FadeInUp key={index}>
+                  <div className="relative flex gap-4">
+                    {/* Step Number Circle */}
+                    <div className="relative z-10 shrink-0">
+                      <div className="w-12 h-12 bg-zen rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-black font-mono font-bold text-sm">
+                          {step.number}
+                        </span>
+                      </div>
+                      {index < steps.length - 1 && (
+                        <div className="absolute top-14 left-1/2 -translate-x-1/2 text-gray-300">
+                          <FontAwesomeIcon icon={faArrowDown} className="text-xs animate-bounce" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content Card */}
+                    <div className="flex-1 bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-zen/10 rounded-lg flex items-center justify-center text-zen">
+                          <FontAwesomeIcon icon={step.icon} className="text-lg" />
+                        </div>
+                        <h3 className="text-base font-bold text-gray-900">
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </FadeInUp>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Tablet/Desktop Grid */}
+        <div className="hidden sm:block relative">
           {/* Connection Line */}
           <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-black/20 to-transparent" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
             {steps.map((step, index) => (
               <FadeInUp key={index}>
                 <div className="relative group">

@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInUp } from "@/components";
+import { FadeInUp, Carousel } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -50,7 +50,55 @@ export default function Testimonials() {
           </div>
         </FadeInUp>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        {/* Mobile Carousel */}
+        <div className="block md:hidden">
+          <Carousel showArrows={false} autoPlay autoPlayInterval={5000}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="px-2">
+                <div className="card-container p-5 h-full flex flex-col mx-auto max-w-[340px]">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <FontAwesomeIcon
+                        key={i}
+                        icon={faStar}
+                        className="text-zen text-sm"
+                      />
+                    ))}
+                  </div>
+
+                  <FontAwesomeIcon
+                    icon={faQuoteLeft}
+                    className="text-black text-2xl mb-4"
+                  />
+
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                    "{testimonial.quote}"
+                  </p>
+
+                  <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+                    <div className="w-12 h-12 bg-zen rounded-full flex items-center justify-center text-black font-bold text-base">
+                      {testimonial.author
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-bold text-sm">
+                        {testimonial.author}
+                      </p>
+                      <p className="text-gray-400 text-xs">
+                        {testimonial.role}, {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {testimonials.map((testimonial, index) => (
             <FadeInUp key={index}>
               <div className="card-container p-5 sm:p-6 h-full flex flex-col">

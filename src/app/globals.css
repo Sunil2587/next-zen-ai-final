@@ -54,6 +54,15 @@ body {
   transition-timing-function: var(--ease-smooth);
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: #ffffff;

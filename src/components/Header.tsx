@@ -80,63 +80,67 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-black border-b border-gray-800">
-          <nav className="flex flex-col p-6 space-y-4">
+      <div
+        className={`lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-lg border-b border-gray-800 transition-all duration-300 ease-out ${
+          mobileMenuOpen 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
+        <nav className="flex flex-col p-6 space-y-1">
+          <a
+            href="#what-we-do"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            What We Do
+          </a>
+          <a
+            href="#who-we-are"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Who We Are
+          </a>
+          <a
+            href="#industries"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Industries
+          </a>
+          <a
+            href="#why-us"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Why Us
+          </a>
+          <Link
+            href="/insights"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Insights
+          </Link>
+          <Link
+            href="/careers"
+            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all font-medium"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Careers
+          </Link>
+          <div className="pt-4 mt-2 border-t border-gray-800">
             <a
-              href="#what-we-do"
-              className="nav-link text-gray-400 hover:text-white py-2"
+              href="#contact"
+              className="block text-center px-5 py-3.5 bg-zen text-black rounded-lg font-bold uppercase tracking-widest text-[11px] hover:brightness-110 transition-all shadow-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
-              What We Do
+              Contact Us
             </a>
-            <a
-              href="#who-we-are"
-              className="nav-link text-gray-400 hover:text-white py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Who We Are
-            </a>
-            <a
-              href="#industries"
-              className="nav-link text-gray-400 hover:text-white py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Industries
-            </a>
-            <a
-              href="#why-us"
-              className="nav-link text-gray-400 hover:text-white py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Why Us
-            </a>
-            <Link
-              href="/insights"
-              className="nav-link text-gray-400 hover:text-white py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Insights
-            </Link>
-            <Link
-              href="/careers"
-              className="nav-link text-gray-400 hover:text-white py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Careers
-            </Link>
-            <div className="pt-4 border-t border-gray-800">
-              <a
-                href="#contact"
-                className="block text-center px-5 py-3 bg-zen text-black rounded-md font-bold uppercase tracking-widest text-[10px] hover:brightness-110 transition-all"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact Us
-              </a>
-            </div>
-          </nav>
-        </div>
-      )}
+          </div>
+        </nav>
+      </div>
       </header>
       {/* Gradient fade from navbar to content */}
       <div className="fixed top-16 md:top-20 left-0 right-0 h-8 bg-gradient-to-b from-black/20 to-transparent pointer-events-none z-[99]" />
