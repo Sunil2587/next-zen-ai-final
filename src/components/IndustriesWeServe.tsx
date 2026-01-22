@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInUp } from "@/components";
+import { FadeInUp, Carousel } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLandmarkDome,
@@ -8,7 +8,6 @@ import {
   faGear,
   faTruckRampBox,
   faShoppingCart,
-  faBolt,
   faArrowRight,
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
@@ -65,7 +64,51 @@ export default function IndustriesWeServe() {
           </div>
         </FadeInUp>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {/* Mobile Carousel */}
+        <div className="block md:hidden">
+          <Carousel showArrows={false} autoPlay autoPlayInterval={4500}>
+            {industries.map((industry, index) => (
+              <div key={index} className="px-2">
+                <div className="group bg-gray-50 border border-gray-200 rounded-xl overflow-hidden hover:border-zen transition-all duration-300 flex flex-col mx-auto max-w-[320px]">
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={industry.image}
+                      alt={industry.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-zen rounded-lg flex items-center justify-center text-black shadow-lg">
+                          <FontAwesomeIcon icon={industry.icon} className="text-sm" />
+                        </div>
+                        <h3 className="text-white font-bold text-lg">
+                          {industry.name}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <ul className="space-y-2">
+                      {industry.items.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                          <span className="w-1.5 h-1.5 rounded-full bg-zen shrink-0"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {industries.map((industry, index) => (
             <FadeInUp key={index}>
               <div className="group bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hover:border-zen hover:shadow-md transition-all duration-300 h-full flex flex-col">

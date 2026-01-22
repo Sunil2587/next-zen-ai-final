@@ -6,10 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="49cec56b-b293-4eb5-89c7-7e546a638a53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/contact/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/contact/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/careers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/careers/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Capabilities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Capabilities.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HowItWorks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HowItWorks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/IndustriesWeServe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/IndustriesWeServe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Testimonials.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Testimonials.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WhatWeDo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WhatWeDo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WhoWeAre.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WhoWeAre.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WhyChooseUs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WhyChooseUs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +31,7 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_C:/Users/micha/Documents/GitHub/next-zen-ai" value="37TIL5epSBFAKurj4k9VNCECDnZ" />
+      <entry key="_C:/Users/micha/Documents/GitHub/next-zen-ai-final" value="38YqR7gboS1G4u3rWO3qPHkpJ7A" />
     </persistenceIdMap>
   </component>
   <component name="Git.Settings">
@@ -48,24 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/micha/Documents/GitHub/next-zen-ai&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\micha\\Documents\\GitHub\\next-zen-ai\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "C:/Users/micha/Documents/GitHub/next-zen-ai",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\micha\\Documents\\GitHub\\next-zen-ai-final\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\micha\Documents\GitHub\next-zen-ai" />
@@ -118,6 +131,8 @@
       <workItem from="1768539247257" duration="4181000" />
       <workItem from="1768744284629" duration="241000" />
       <workItem from="1768842749963" duration="608000" />
+      <workItem from="1768986840645" duration="640000" />
+      <workItem from="1769006761062" duration="3952000" />
     </task>
     <servers />
   </component>

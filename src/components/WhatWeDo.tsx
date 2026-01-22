@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInUp } from "@/components";
+import { FadeInUp, Carousel } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBrain,
@@ -149,8 +149,50 @@ export default function WhatWeDo() {
           </div>
         </FadeInUp>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+        {/* Mobile Carousel */}
+        <div className="block md:hidden">
+          <Carousel showArrows={false} autoPlay autoPlayInterval={4000}>
+            {services.map((service, index) => (
+              <div key={index} className="px-2">
+                <Link href={`/services/${service.slug}`} className="block h-full group">
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden hover:border-zen hover:shadow-lg transition-all duration-300 flex flex-col mx-auto max-w-[320px]">
+                    {/* Image */}
+                    <div className="relative h-40 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <div className="w-12 h-12 bg-zen rounded-lg flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
+                          <FontAwesomeIcon icon={service.icon} className="text-lg" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-5 flex-grow flex flex-col">
+                      <h3 className="text-lg font-bold text-black mb-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-grow">
+                        {service.description}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-black text-sm font-semibold group-hover:gap-3 transition-all">
+                        Learn More
+                        <FontAwesomeIcon icon={faArrowRight} className="text-zen" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {services.map((service, index) => (
             <FadeInUp key={index} delay={index * 50}>
               <Link href={`/services/${service.slug}`} className="block h-full group">

@@ -1,3 +1,5 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBrain,
@@ -6,7 +8,9 @@ import {
   faCodeBranch,
   faRobot,
   faVial,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const pillars = [
   {
@@ -57,6 +61,8 @@ const matrixItems = [
 ];
 
 export default function Capabilities() {
+  const [expandedPillar, setExpandedPillar] = useState<number | null>(0);
+
   return (
     <section id="capabilities" className="py-10 sm:py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
@@ -73,8 +79,77 @@ export default function Capabilities() {
           </p>
         </div>
 
-        {/* Balanced Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Mobile Expandable Cards */}
+        <div className="block md:hidden space-y-3">
+          {/* Pillars - Expandable */}
+          <div className="mb-6">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">Core Pillars</p>
+            <div className="space-y-2">
+              {pillars.map((pillar, index) => (
+                <div
+                  key={index}
+                  className={`bg-white border rounded-xl overflow-hidden transition-all duration-300 ${
+                    expandedPillar === index ? "border-zen shadow-lg" : "border-gray-200"
+                  }`}
+                >
+                  <button
+                    onClick={() => setExpandedPillar(expandedPillar === index ? null : index)}
+                    className="w-full p-4 flex items-center justify-between text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-zen rounded-lg flex items-center justify-center text-black shrink-0">
+                        <FontAwesomeIcon icon={pillar.icon} className="text-base" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-gray-900">{pillar.title}</h4>
+                        <span className="text-[8px] font-black uppercase tracking-widest text-zen">{pillar.tag}</span>
+                      </div>
+                    </div>
+                    <div className={`w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                      expandedPillar === index ? "rotate-180 bg-zen" : ""
+                    }`}>
+                      <FontAwesomeIcon icon={faChevronDown} className={`text-xs ${expandedPillar === index ? "text-black" : "text-gray-500"}`} />
+                    </div>
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-500 ease-out ${
+                    expandedPillar === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  }`}>
+                    <p className="px-4 pb-4 text-xs text-gray-500 leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Matrix Items - Horizontal Scroll */}
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">Innovation Matrix</p>
+            <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
+              {matrixItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl border-[1.5px] border-black shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)] p-4 flex-shrink-0 w-[260px] snap-center"
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="w-9 h-9 bg-zen rounded-lg flex items-center justify-center text-black">
+                      <FontAwesomeIcon icon={item.icon} className="text-sm" />
+                    </div>
+                    <span className="text-[7px] font-bold text-gray-500 border border-gray-300 px-2 py-1 rounded uppercase">
+                      {item.label}
+                    </span>
+                  </div>
+                  <h5 className="text-sm font-bold text-gray-900 mb-2">{item.title}</h5>
+                  <p className="text-[11px] text-gray-500 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Grid Layout */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Pillars */}
           {pillars.map((pillar, index) => (
             <div key={index} className="card-container p-5 sm:p-6 md:p-8 flex flex-col">

@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInUp } from "@/components";
+import { FadeInUp, ExpandableCard } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBrain,
@@ -70,8 +70,26 @@ export default function WhyChooseUs() {
           </div>
         </FadeInUp>
 
-        {/* Reasons Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {/* Mobile Expandable Cards */}
+        <div className="block sm:hidden space-y-3">
+          {reasons.map((reason, index) => (
+            <FadeInUp key={index}>
+              <ExpandableCard
+                title={reason.title}
+                icon={<FontAwesomeIcon icon={reason.icon} className="text-lg" />}
+                preview={reason.description.substring(0, 50) + "..."}
+                defaultOpen={index === 0}
+              >
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {reason.description}
+                </p>
+              </ExpandableCard>
+            </FadeInUp>
+          ))}
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {reasons.map((reason, index) => (
             <FadeInUp key={index}>
               <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 hover:border-zen hover:shadow-md transition-all group h-full">

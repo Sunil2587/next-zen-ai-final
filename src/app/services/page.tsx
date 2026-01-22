@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Footer, Background, FadeInUp } from "@/components";
+import { Header, Footer, Background, FadeInUp, Carousel } from "@/components";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -278,8 +278,60 @@ export default function Services() {
             </div>
           </FadeInUp>
 
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {/* Mobile Carousel */}
+          <div className="block md:hidden">
+            <Carousel showArrows={false} autoPlay autoPlayInterval={4000}>
+              {services.map((service, index) => (
+                <div key={index} className="px-2">
+                  <Link href={`/services/${service.slug}`} className="block h-full group">
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 hover:border-zen transition-all mx-auto max-w-[340px]">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-zen rounded-lg flex items-center justify-center text-black shrink-0 group-hover:bg-black group-hover:text-zen transition-all">
+                          <FontAwesomeIcon
+                            icon={service.icon}
+                            className="text-xl"
+                          />
+                        </div>
+                        <h2 className="text-lg font-bold text-black">
+                          {service.title}
+                        </h2>
+                      </div>
+                      <p className="text-gray-500 text-sm mb-4 line-clamp-2">
+                        {service.description}
+                      </p>
+
+                      <div className="pt-4 border-t border-gray-200">
+                        <h3 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">
+                          Key Capabilities
+                        </h3>
+                        <ul className="space-y-1.5">
+                          {service.features.slice(0, 3).map((feature, i) => (
+                            <li
+                              key={i}
+                              className="text-gray-600 text-xs flex items-center gap-2"
+                            >
+                              <span className="w-1 h-1 bg-zen rounded-full shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="mt-4 flex justify-end">
+                        <span className="inline-flex items-center gap-2 text-black font-bold text-sm group-hover:gap-3 transition-all">
+                          Learn More
+                          <FontAwesomeIcon icon={faArrowRight} className="text-zen" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </Carousel>
+          </div>
+
+          {/* Desktop Services Grid */}
+          <div className="hidden md:grid grid-cols-2 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <FadeInUp key={index}>
                 <Link href={`/services/${service.slug}`} className="block h-full group">

@@ -257,14 +257,14 @@ export default function Careers() {
                     resume and we'll keep you in mind for future opportunities.
                   </p>
                   <a
-                    href="mailto:hr@nextzenaistrategix.com"
+                    href="mailto:careers@nextzenaistrategix.com"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >
                     Send Your Resume
                     <FontAwesomeIcon icon={faArrowRight} />
                   </a>
                   <p className="text-gray-400 text-xs sm:text-sm mt-4 sm:mt-6">
-                    hr@nextzenaistrategix.com
+                    careers@nextzenaistrategix.com
                   </p>
                 </div>
               </div>
